@@ -1,0 +1,15 @@
+name: AxKills
+version: '${project.version}'
+main: com.artillexstudios.axkills.AxKills
+api-version: '1.13'
+softdepend:
+  - PlaceholderAPI
+  - InteractiveChat
+
+commands:
+  axkills:
+    usage: /<command>
+
+permissions:
+  axkills.reload:
+    default: op

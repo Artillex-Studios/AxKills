@@ -1,0 +1,28 @@
+# Builtin placeholders:
+#  %victim%
+#
+# These only work in the KILLED message:
+#  %attacker%
+#  %item% - requires InteractiveChat
+#
+# Also in the KILLED message you can parse placeholders as the killer like this:
+# normal: %statistic_player_kills%
+# parsed as attacker: %[ATTACKER]statistic_player_kills%
+#
+# To remove a death message set the text to an empty string: ""x
+
+death-messages:
+  KILLED: "&#33ff33%victim% &fwas &#FFCC00killed &fby &#FF3333%attacker% &fusing &#00FFFF%item%"
+  FALL: "&#33ff33%victim% &#FFCC00fell down &ffrom a high place!"
+  VOID: "&#33ff33%victim% &ffell in the &#FFCC00void&f!"
+  LAVA: "&#33ff33%victim% &fgot burnt by &#FFCC00lava&f!"
+  DROWNING: "&#33ff33%victim% &fwent underwater for too long and &#FFCC00drowned&f!"
+
+prefix: "&#EE3333&lAxKills&r &7» "
+reload: "&#33FF33Successfully reloaded the plugin!"
+
+errors:
+  no-permission: "&#FF3333You don't have a permission to use this!"
+
+# do not change this
+version: 1
