@@ -70,7 +70,6 @@ public class DeathListener implements Listener {
             msg = finalTxt.toString();
 
         } else if (event.getEntity().getLastDamageCause() != null && CONFIG.isString("death-messages." + event.getEntity().getLastDamageCause().getCause())) {
-            System.out.println("death-messages." + event.getEntity().getLastDamageCause().getCause());
             msg = CONFIG.getString("death-messages." + event.getEntity().getLastDamageCause().getCause());
         } else {
             msg = "";

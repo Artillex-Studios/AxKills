@@ -2,6 +2,7 @@ name: AxKills
 version: '${project.version}'
 main: com.artillexstudios.axkills.AxKills
 api-version: '1.13'
+folia-supported: true
 softdepend:
   - PlaceholderAPI
   - InteractiveChat
