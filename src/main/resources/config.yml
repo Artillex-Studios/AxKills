@@ -11,6 +11,8 @@
 #
 # To remove a death message set the text to an empty string: ""x
 
+# list of all the valid death causes: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+# note: the plugin already auto generates them when the server starts
 death-messages:
   KILLED: "&#33ff33%victim% &fwas &#FFCC00killed &fby &#FF3333%attacker% &fusing &#00FFFF%item%"
   FALL: "&#33ff33%victim% &#FFCC00fell down &ffrom a high place!"
