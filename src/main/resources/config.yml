@@ -23,8 +23,10 @@ death-messages:
 prefix: "&#EE3333&lAxKills&r &7» "
 reload: "&#33FF33Successfully reloaded the plugin!"
 
+item-format: "%item%"
+
 errors:
   no-permission: "&#FF3333You don't have a permission to use this!"
 
 # do not change this
-version: 1
+version: 2

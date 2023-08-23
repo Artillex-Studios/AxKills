@@ -27,11 +27,7 @@ public class DeathListener implements Listener {
             msg = CONFIG.getString("death-messages.KILLED");
             msg = msg.replace("%attacker%", killer.getName());
             msg = msg.replace("%victim%", p.getName());
-
-            if (Bukkit.getPluginManager().getPlugin("InteractiveChat") != null)
-                msg = msg.replace("%item%", InteractiveChatHook.markSender(killer));
-            else
-                msg = msg.replace("%item%", "<You need InteractiveChat for the item feature>");
+            msg = msg.replace("%item%", Utils.setItem(killer));
 
             StringBuilder finalTxt = new StringBuilder();
             String[] message = msg.split("");
