@@ -3,7 +3,7 @@
 #
 # These only work in the KILLED message:
 #  %attacker%
-#  %item% - requires InteractiveChat
+#  %item% - its recommended to install InteractiveChat
 #
 # Also in the KILLED message you can parse placeholders as the killer like this:
 # normal: %statistic_player_kills%
