@@ -28,7 +28,9 @@ public class Utils {
         } else {
             if (player.getInventory().getItemInHand() == null) return "air";
             final ItemStack it = player.getInventory().getItemInHand();
-            final String typeStr = it.getType().toString().replace("_", " ").toLowerCase();
+            String typeStr = it.getType().toString().replace("_", " ").toLowerCase();
+
+            typeStr = typeStr.replace("air", CONFIG.getString("empty-hand-text"));
 
             if (it.getItemMeta() == null) return CONFIG.getString("item-format").replace("%item%", typeStr);
             final ItemMeta meta = it.getItemMeta();
