@@ -16,7 +16,6 @@ public class DeathListener implements Listener {
     @EventHandler
     public void onDeath(@NotNull PlayerDeathEvent event) {
         final Player player = event.getEntity();
-        System.out.println(event.getDeathMessage());
 
         String msg;
 
