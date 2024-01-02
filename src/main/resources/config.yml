@@ -1,15 +1,17 @@
+# The plugin will only work if the showDeathMessages gamerule is set to true
+#
 # Builtin placeholders:
 #  %victim%
 #
 # These only work in the KILLED message:
 #  %attacker%
-#  %item% - its recommended to install InteractiveChat
+#  %item% - It's recommended to install InteractiveChat
 #
 # Also in the KILLED message you can parse placeholders as the killer like this:
 # normal: %statistic_player_kills%
 # parsed as attacker: %[ATTACKER]statistic_player_kills%
 #
-# To remove a death message set the text to an empty string: ""x
+# To remove a death message set the text to an empty string: ""
 
 # list of all the valid death causes: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
 # note: the plugin already auto generates them when the server starts

@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import static com.artillexstudios.axkills.AxKills.CONFIG;
 
 public class Utils {
-
     public static String setPlaceholders(@NotNull Player player, @NotNull String msg) {
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
@@ -20,7 +19,6 @@ public class Utils {
             return msg;
         }
     }
-
     public static String setItem(@NotNull Player player) {
 
         if (Bukkit.getPluginManager().getPlugin("InteractiveChat") != null) {

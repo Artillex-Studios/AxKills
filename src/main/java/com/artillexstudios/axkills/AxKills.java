@@ -10,12 +10,16 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AxKills extends JavaPlugin {
-    private static AbstractConfig abstractConfig;
     public static YamlDocument CONFIG;
+    private static AbstractConfig abstractConfig;
     private static AxKills instance;
 
     public static AxKills getInstance() {
         return instance;
+    }
+
+    public static AbstractConfig getAbstractConfig() {
+        return abstractConfig;
     }
 
     @Override
@@ -34,9 +38,5 @@ public final class AxKills extends JavaPlugin {
         this.getCommand("axkills").setExecutor(new MainCommand());
 
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
-    }
-
-    public static AbstractConfig getAbstractConfig() {
-        return abstractConfig;
     }
 }

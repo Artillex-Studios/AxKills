@@ -1,9 +1,7 @@
 package com.artillexstudios.axkills.listeners;
 
-import com.artillexstudios.axkills.hooks.InteractiveChatHook;
 import com.artillexstudios.axkills.utils.ColorUtils;
 import com.artillexstudios.axkills.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,16 +15,17 @@ public class DeathListener implements Listener {
 
     @EventHandler
     public void onDeath(@NotNull PlayerDeathEvent event) {
-        final Player p = event.getEntity();
+        final Player player = event.getEntity();
+        System.out.println(event.getDeathMessage());
 
         String msg;
 
-        if (p.getKiller() != null) {
-            final Player killer = p.getKiller();
+        if (player.getKiller() != null) {
+            final Player killer = player.getKiller();
 
             msg = CONFIG.getString("death-messages.KILLED");
             msg = msg.replace("%attacker%", killer.getName());
-            msg = msg.replace("%victim%", p.getName());
+            msg = msg.replace("%victim%", player.getName());
             msg = msg.replace("%item%", Utils.setItem(killer));
 
             StringBuilder finalTxt = new StringBuilder();
@@ -36,7 +35,7 @@ public class DeathListener implements Listener {
             for (String str : message) {
 
                 if (str.equals("%") && canbePlaceholder) {
-                    if (tempPlaceholder.equals("")) {
+                    if (tempPlaceholder.isEmpty()) {
                         tempPlaceholder += str;
                     } else {
                         tempPlaceholder += str;
@@ -45,21 +44,19 @@ public class DeathListener implements Listener {
                             tempPlaceholder = tempPlaceholder.replace("[ATTACKER]", "");
                             finalTxt.append(Utils.setPlaceholders(killer, tempPlaceholder));
                         } else {
-                            finalTxt.append(Utils.setPlaceholders(p, tempPlaceholder));
+                            finalTxt.append(Utils.setPlaceholders(player, tempPlaceholder));
                         }
                         tempPlaceholder = "";
                     }
                     continue;
                 }
 
-                if (!tempPlaceholder.equals("")) {
+                if (!tempPlaceholder.isEmpty()) {
                     tempPlaceholder += str;
                     continue;
                 }
 
-                canbePlaceholder = true;
-
-                if (str.equals("\\")) canbePlaceholder = false;
+                canbePlaceholder = !str.equals("\\");
                 finalTxt.append(str);
             }
 
@@ -71,8 +68,8 @@ public class DeathListener implements Listener {
             msg = "";
         }
 
-        msg = msg.replace("%victim%", p.getName());
-        msg = Utils.setPlaceholders(p, msg);
+        msg = msg.replace("%victim%", player.getName());
+        msg = Utils.setPlaceholders(player, msg);
 
         event.setDeathMessage(ColorUtils.format(msg));
     }
