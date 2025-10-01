@@ -18,14 +18,15 @@ public class DeathListener implements Listener {
         final Player player = event.getEntity();
 
         String msg;
+        boolean isKillMessage = false;
 
         if (player.getKiller() != null) {
             final Player killer = player.getKiller();
+            isKillMessage = true;
 
             msg = CONFIG.getString("death-messages.KILLED");
             msg = msg.replace("%attacker%", killer.getName());
             msg = msg.replace("%victim%", player.getName());
-            msg = msg.replace("%item%", Utils.setItem(killer));
 
             StringBuilder finalTxt = new StringBuilder();
             String[] message = msg.split("");
@@ -60,6 +61,7 @@ public class DeathListener implements Listener {
             }
 
             msg = finalTxt.toString();
+            msg = msg.replace("%item%", Utils.setItem(killer));
 
         } else if (event.getEntity().getLastDamageCause() != null && CONFIG.isString("death-messages." + event.getEntity().getLastDamageCause().getCause())) {
             msg = CONFIG.getString("death-messages." + event.getEntity().getLastDamageCause().getCause());
@@ -68,7 +70,10 @@ public class DeathListener implements Listener {
         }
 
         msg = msg.replace("%victim%", player.getName());
-        msg = Utils.setPlaceholders(player, msg);
+
+        if (!isKillMessage) {
+            msg = Utils.setPlaceholders(player, msg);
+        }
 
         event.setDeathMessage(ColorUtils.format(msg));
     }
